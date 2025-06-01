@@ -59,7 +59,7 @@ run = '''
 description = "Setup picotool udev rules"
 run = '''
   #!/usr/bin/env sh
-  sudo cp ~/config-files/config/99-picotool.rules /etc/udev/rules.d/
+  sudo curl -o /etc/udev/rules.d/99-picotool.rules https://raw.githubusercontent.com/raspberrypi/picotool/refs/heads/master/udev/99-picotool.rules
   sudo groupadd plugdev
   sudo usermod -aG plugdev {{arg(name="user", var=true)}}
   sudo udevadm control --reload-rules
