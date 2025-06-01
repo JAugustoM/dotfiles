@@ -1,12 +1,25 @@
 [settings]
 idiomatic_version_file_enable_tools = ['python']
+npm.bun = true
+pipx.uvx = true
+cargo_binstall = true
 
 [env]
 PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
 
 [tools]
+bun = "latest"
+node = "latest"
 usage = "latest"
 watchexec = "latest"
+cmake = "latest"
+uv = "latest"
+cargo-binstall = "latest"
+just = "latest"
+ninja = "latest"
+"pipx:uvenv" = "latest"
+"npm:typescript" = "latest"
+"npm:live-server" = "latest"
 
 # Tasks
 
@@ -78,9 +91,7 @@ run = '''
 [tasks."update:dev"]
 description = "Updates development tools"
 run = '''
-  bun update -g
   rustup update
-  uv tool upgrade --all
   uvenv upgrade-all
   mise up
 '''
