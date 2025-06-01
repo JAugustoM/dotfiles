@@ -1,0 +1,10 @@
+# Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Extra Path
+path+=($HOME/.local/bin)
+path+=($HOME/bin)
+path+=($HOME/.bun/bin)
+
+# Custom Variables
+EDITOR=/usr/bin/nvim

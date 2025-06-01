@@ -1,0 +1,39 @@
+# Completions Plugin
+mattmc3/ez-compinit
+
+# Oh My Zsh Section
+getantidote/use-omz
+
+## Oh My Zsh Libraries
+ohmyzsh/ohmyzsh path:lib
+
+## Oh My Zsh General Plugins
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/aliases
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
+ohmyzsh/ohmyzsh path:plugins/command-not-found  
+ohmyzsh/ohmyzsh path:plugins/dircycle
+
+## Oh My Zsh Programming Plugins
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/rust
+ohmyzsh/ohmyzsh path:plugins/mise
+
+# Misc. Plugins
+
+trapd00r/LS_COLORS
+olets/zsh-abbr
+nix-community/nix-zsh-completions kind:fpath
+
+# Zsh Users Plugins
+
+zsh-users/zsh-completions path:src kind:fpath
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting
+
