@@ -1,0 +1,6 @@
+alias picoserial="sudo minicom --device /dev/ttyACM0"
+alias zshconfig="nvim ~/.zshrc"
+alias edit-alias="nvim ~/.zsh/aliases.zsh"
+alias edit-functions="nvim ~/.zsh/custom-functions.zsh"
+alias sysupdate="sudo dnf upgrade --refresh && flatpak update -y"
+alias dev-clean="devbox global run -- nix store gc --extra-experimental-features nix-command"

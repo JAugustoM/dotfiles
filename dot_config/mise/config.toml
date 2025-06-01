@@ -1,0 +1,86 @@
+[settings]
+idiomatic_version_file_enable_tools = ['python']
+
+[env]
+PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
+
+[tools]
+usage = "latest"
+watchexec = "latest"
+
+# Tasks
+
+[tasks."preset:picosdk"]
+description = "Sets up a Pico C SDK project with template files"
+dir = "{{ cwd }}"
+usage = '''
+  arg "project_name" "Project name"
+'''
+run = '''
+  #!/usr/bin/env zsh
+  mkdir $usage_project_name
+  cd $usage_project_name
+  cp -r ~/Templates/pico-sdk-template/. .
+  cp $PICO_SDK_PATH/external/pico_sdk_import.cmake .
+  mise trust
+'''
+
+[tasks."preset:typescript"]
+description = "Sets up a Typescript project with template files"
+dir = "{{ cwd }}"
+usage = '''
+  arg "project_name" "Project name"
+'''
+run = '''
+  #!/usr/bin/env zsh
+  mkdir $usage_project_name
+  cd $usage_project_name
+  cp -r ~/Templates/typescript-template/. .
+'''
+
+[tasks."setup:gh"]
+description = "Sets up GH as credential manager"
+tools.gh = "latest"
+run = '''
+  #!/usr/bin/env zsh
+  gh auth setup-git
+  gh auth login
+'''
+
+[tasks."setup:beets"]
+description = "Setup for the beets tool"
+run = '''
+  #!/usr/bin/env zsh
+  uvenv install "beets[replaygain,chroma,autobpm,fetchart,embedart,lyrics,scrub,thumbnails,lastgenre]"
+  uvenv inject beets standard-aifc standard-sunau beets-xtractor beetcamp
+'''
+
+[tasks."setup:picotool"]
+description = "Setup picotool udev rules"
+run = '''
+  #!/usr/bin/env sh
+  sudo cp ~/config-files/config/99-picotool.rules /etc/udev/rules.d/
+  sudo groupadd plugdev
+  sudo usermod -aG plugdev {{arg(name="user", var=true)}}
+  sudo udevadm control --reload-rules
+  sudo udevadm trigger
+'''
+
+[tasks."update:pkgs"]
+description = "Updates the entire system"
+run = '''
+  sudo dnf upgrade -y --refresh
+  flatpak update -y
+  brew update
+  brew upgrade
+'''
+
+[tasks."update:dev"]
+description = "Updates development tools"
+run = '''
+  bun update -g
+  rustup update
+  uv tool upgrade --all
+  uvenv upgrade-all
+  mise up
+'''
