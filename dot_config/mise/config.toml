@@ -1,7 +1,7 @@
 [settings]
-idiomatic_version_file_enable_tools = ['python']
 npm.bun = true
 pipx.uvx = true
+python.uv_venv_auto = true
 cargo_binstall = true
 
 [env]
