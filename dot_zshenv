@@ -7,4 +7,4 @@ path+=($HOME/bin)
 path+=($HOME/.bun/bin)
 
 # Custom Variables
-EDITOR=/usr/bin/nvim
+EDITOR="$(brew --prefix)/bin/nvim"
