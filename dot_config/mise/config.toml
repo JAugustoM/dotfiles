@@ -35,7 +35,6 @@ run = '''
   cd $usage_project_name
   cp -r ~/Templates/pico-sdk-template/. .
   cp $PICO_SDK_PATH/external/pico_sdk_import.cmake .
-  mise trust
 '''
 
 [tasks."preset:typescript"]
