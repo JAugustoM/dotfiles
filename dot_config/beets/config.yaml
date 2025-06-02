@@ -25,6 +25,7 @@ plugins:
   - thumbnails
   - lastgenre
   - bandcamp
+  - xtractor
 fetchart:
   quality: 75
   enforce_ratio: yes
@@ -40,3 +41,20 @@ parentwork:
   auto: yes
 thumbnails:
   dolphin: yes
+xtractor:
+  essentia_extractor: /home/jaugusto/Programs/essentia-extractors/streaming_extractor_music
+  extractor_profile:
+    highlevel:
+      svm_models:
+        - /home/jaugusto/Programs/essentia-extractors/danceability.history
+        - /home/jaugusto/Programs/essentia-extractors/gender.history
+        - /home/jaugusto/Programs/essentia-extractors/genre_rosamerica.history
+        - /home/jaugusto/Programs/essentia-extractors/mood_acoustic.history
+        - /home/jaugusto/Programs/essentia-extractors/mood_aggresive.history
+        - /home/jaugusto/Programs/essentia-extractors/mood_electronic.history
+        - /home/jaugusto/Programs/essentia-extractors/mood_happy.history
+        - /home/jaugusto/Programs/essentia-extractors/mood_sad.history
+        - /home/jaugusto/Programs/essentia-extractors/mood_party.history
+        - /home/jaugusto/Programs/essentia-extractors/mood_relaxed.history
+        - /home/jaugusto/Programs/essentia-extractors/voice_instrumental.history
+        - /home/jaugusto/Programs/essentia-extractors/moods_mirex.history
