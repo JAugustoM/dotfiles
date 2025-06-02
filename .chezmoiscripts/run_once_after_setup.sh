@@ -19,7 +19,7 @@ sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
 sudo dnf group install -y c-development development-tools
 sudo dnf install -y zsh stow kitty
 
-# PicoSDK Dependecies
+# PicoSDK
 sudo dnf install arm-none-eabi-gcc-cs-c++ arm-none-eabi-newlib libusb1-devel
 
 # Brew
