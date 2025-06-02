@@ -53,7 +53,6 @@ run = '''
 
 [tasks."setup:gh"]
 description = "Sets up GH as credential manager"
-tools.gh = "latest"
 run = '''
   #!/usr/bin/env zsh
   gh auth setup-git
