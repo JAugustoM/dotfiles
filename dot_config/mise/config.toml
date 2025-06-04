@@ -109,7 +109,7 @@ run = '''
 '''
 
 [tasks."update:pkgs"]
-description = "Updates the entire system"
+description = "Updates packages from package managers"
 run = '''
   sudo dnf upgrade -y --refresh
   flatpak update -y
