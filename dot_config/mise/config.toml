@@ -57,6 +57,7 @@ run = '''
   #!/usr/bin/env zsh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
+    echo "Create .env file"
   fi
 
   if [[ "$GH_SETUP" == "TRUE" ]]; then
@@ -74,6 +75,7 @@ run = '''
   #!/usr/bin/env zsh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
+    echo "Create .env file"
   fi
 
   if [[ "$BEETS_SETUP" == "TRUE" ]]; then
@@ -91,6 +93,7 @@ run = '''
   #!/usr/bin/env sh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
+    echo "Create .env file"
   fi
 
   if [[ "$PICOTOOL_SETUP" == "TRUE" ]]; then
