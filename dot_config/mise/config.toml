@@ -55,27 +55,54 @@ run = '''
 description = "Sets up GH as credential manager"
 run = '''
   #!/usr/bin/env zsh
-  gh auth setup-git
-  gh auth login
+  if [[ ! -r $MISE_TASK_DIR/.env ]]; then
+    touch $MISE_TASK_DIR/.env
+  fi
+
+  if [[ "$GH_SETUP" == "TRUE" ]]; then
+    echo "gh already configured"
+  else
+    gh auth setup-git
+    gh auth login
+    echo "GH_SETUP=TRUE" >> $MISE_TASK_DIR/.env
+  fi
 '''
 
 [tasks."setup:beets"]
 description = "Setup for the beets tool"
 run = '''
   #!/usr/bin/env zsh
-  uvenv install "beets[replaygain,chroma,autobpm,fetchart,embedart,lyrics,scrub,thumbnails,lastgenre]"
-  uvenv inject beets standard-aifc standard-sunau beets-xtractor beetcamp
+  if [[ ! -r $MISE_TASK_DIR/.env ]]; then
+    touch $MISE_TASK_DIR/.env
+  fi
+
+  if [[ "$UVENV_SETUP" == "TRUE" ]]; then
+    echo "uvenv already configured"
+  else
+    uvenv install "beets[replaygain,chroma,autobpm,fetchart,embedart,lyrics,scrub,thumbnails,lastgenre]"
+    uvenv inject beets standard-aifc standard-sunau beets-xtractor beetcamp
+    echo "UVENV_SETUP=TRUE" >> $MISE_TASK_DIR/.env
+  fi
 '''
 
 [tasks."setup:picotool"]
 description = "Setup picotool udev rules"
 run = '''
   #!/usr/bin/env sh
-  sudo curl -o /etc/udev/rules.d/99-picotool.rules https://raw.githubusercontent.com/raspberrypi/picotool/refs/heads/master/udev/99-picotool.rules
-  sudo groupadd plugdev
-  sudo usermod -aG plugdev {{arg(name="user", var=true)}}
-  sudo udevadm control --reload-rules
-  sudo udevadm trigger
+  if [[ ! -r $MISE_TASK_DIR/.env ]]; then
+    touch $MISE_TASK_DIR/.env
+  fi
+
+  if [[ "$PICOTOOL_SETUP" == "TRUE" ]]; then
+    echo "picotool already configured"
+  else
+    sudo curl -o /etc/udev/rules.d/99-picotool.rules https://raw.githubusercontent.com/raspberrypi/picotool/refs/heads/master/udev/99-picotool.rules
+    sudo groupadd plugdev
+    sudo usermod -aG plugdev {{arg(name="user", var=true)}}
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+    echo "PICOTOOL_SETUP=TRUE" >> $MISE_TASK_DIR/.env
+  fi
 '''
 
 [tasks."update:pkgs"]
@@ -93,22 +120,4 @@ run = '''
   rustup update
   uvenv upgrade-all
   mise up
-'''
-
-[tasks."test:env"]
-description = "Test task for dotenv"
-run = '''
-  #!/usr/bin/env zsh
-  if [[ ! -r $MISE_TASK_DIR/.env ]]; then
-    touch $MISE_TASK_DIR/.env
-    echo "TEST=Hello" >> $MISE_TASK_DIR/.env
-    echo "Created .env"
-  else
-    if [[ "$TEST" == "Hello" ]]; then
-      echo "Said Hello"
-    fi
-    echo ".env exists"
-    echo $TEST
-    cat $MISE_TASK_DIR/.env
-  fi
 '''
