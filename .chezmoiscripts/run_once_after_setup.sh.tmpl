@@ -30,6 +30,9 @@ else
 fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+brew_packages=$(brew list)
+echo "$brew_packages"
+
 {{ range .packages.brew -}}
 if type -P {{ . | quote }} &>/dev/null; then
   echo "{{ . }} already installed"
