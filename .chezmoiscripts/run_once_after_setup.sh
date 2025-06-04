@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # RPM Fusion setup
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
@@ -23,32 +23,18 @@ sudo dnf install -y zsh stow kitty
 sudo dnf install arm-none-eabi-gcc-cs-c++ arm-none-eabi-newlib libusb1-devel
 
 # Brew
-/bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [[ ! -d /home/linuxbrew ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-brew install antidote
-brew install eza
-brew install fastfetch
-brew install fd
-brew install ffmpeg
-brew install fzf
-brew install gh
-brew install imagemagick
-brew install jq
-brew install lazygit
-brew install neovim
-brew install poppler
-brew install resvg
-brew install ripgrep
-brew install yazi
-brew install zoxide
-brew install starship
-brew install kew
-brew install mise
-brew install rustup
-brew install picotool
-brew install yt-dlp
-brew install aria2
+# while read bin; do
+#   if type -P "$bin" &>/dev/null; then
+#     brew install "$bin"
+#   else
+#     echo "$bin already installed"
+#   fi
+# done <brew_packages.txt
 
 # Mise
 mise install
