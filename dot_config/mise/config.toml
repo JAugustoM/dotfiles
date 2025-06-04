@@ -6,6 +6,7 @@ cargo_binstall = true
 
 [env]
 PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
+_.file = ".env"
 
 [tools]
 bun = "latest"
@@ -92,4 +93,17 @@ run = '''
   rustup update
   uvenv upgrade-all
   mise up
+'''
+
+[tasks."test:env"]
+description = "Test task for dotenv"
+run = '''
+  #!/usr/bin/env zsh
+  if [[ ! -r .env ]]; then
+    touch $MISE_CONFIG_ROOT/.env
+    echo "Created .env"
+  else
+    echo ".env exists"
+    cat $MISE_CONFIG_ROOT/.env
+  fi
 '''
