@@ -99,7 +99,7 @@ run = '''
 description = "Test task for dotenv"
 run = '''
   #!/usr/bin/env zsh
-  if [[ ! -e .env ]]; then
+  if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
     echo "Created .env"
   else
