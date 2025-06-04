@@ -4,3 +4,29 @@ autoPush = true
 
 [edit]
 apply = true
+
+[data.packages]
+brew = [
+  "antidote",
+  "eza",
+  "fastfetch",
+  "fd",
+  "ffmpeg",
+  "fzf",
+  "gh",
+  "imagemagick",
+  "jq",
+  "lazygit",
+  "neovim",
+  "poppler",
+  "resvg",
+  "ripgrep",
+  "yazi",
+  "zoxide",
+  "starship",
+  "kew",
+  "mise",
+  "picotool",
+  "yt-dlp",
+  "aria2",
+]
