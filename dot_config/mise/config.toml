@@ -76,12 +76,12 @@ run = '''
     touch $MISE_TASK_DIR/.env
   fi
 
-  if [[ "$UVENV_SETUP" == "TRUE" ]]; then
+  if [[ "$BEETS_SETUP" == "TRUE" ]]; then
     echo "uvenv already configured"
   else
-    uvenv install "beets[replaygain,chroma,autobpm,fetchart,embedart,lyrics,scrub,thumbnails,lastgenre]"
-    uvenv inject beets standard-aifc standard-sunau beets-xtractor beetcamp
-    echo "UVENV_SETUP=TRUE" >> $MISE_TASK_DIR/.env
+    uvenv install "beets[chroma,autobpm,fetchart,embedart,lyrics,scrub,thumbnails,lastgenre]"
+    uvenv inject beets standard-aifc standard-sunau beetcamp
+    echo "BEETS_SETUP=TRUE" >> $MISE_TASK_DIR/.env
   fi
 '''
 
