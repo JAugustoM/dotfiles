@@ -6,7 +6,7 @@ cargo_binstall = true
 
 [env]
 PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
-_.file = ".env"
+MISE_ENV_FILE = ".env"
 
 [tools]
 bun = "latest"
@@ -101,9 +101,11 @@ run = '''
   #!/usr/bin/env zsh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
+    echo "TEST=Hello" >> $MISE_TASK_DIR/.env
     echo "Created .env"
   else
     echo ".env exists"
+    echo "Test var = " $TEST
     cat $MISE_TASK_DIR/.env
   fi
 '''
