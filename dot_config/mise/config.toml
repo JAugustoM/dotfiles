@@ -6,7 +6,6 @@ cargo_binstall = true
 
 [env]
 PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
-_.file = '.env'
 
 [tools]
 bun = "latest"
