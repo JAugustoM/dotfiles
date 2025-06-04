@@ -104,6 +104,9 @@ run = '''
     echo "TEST=Hello" >> $MISE_TASK_DIR/.env
     echo "Created .env"
   else
+    if [[ "$TEST" == "Hello" ]]; then
+      echo "Said Hello"
+    fi
     echo ".env exists"
     echo $TEST
     cat $MISE_TASK_DIR/.env
