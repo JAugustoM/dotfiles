@@ -100,8 +100,7 @@ description = "Test task for dotenv"
 run = '''
   #!/usr/bin/env zsh
   if [[ ! -r .env ]]; then
-    echo $MISE_TASK_DIR
-    touch $MISE_CONFIG_ROOT/.env
+    touch $MISE_TASK_DIR/.env
     echo "Created .env"
   else
     echo ".env exists"
