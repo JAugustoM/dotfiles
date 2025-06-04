@@ -104,6 +104,6 @@ run = '''
     echo "Created .env"
   else
     echo ".env exists"
-    cat $MISE_CONFIG_ROOT/.env
+    cat $MISE_TASK_DIR/.env
   fi
 '''
