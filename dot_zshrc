@@ -7,5 +7,7 @@ source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 
 antidote load
 
+source <(fzf --zsh)
+
 # Prompt
 eval "$(starship init zsh)"
