@@ -57,7 +57,7 @@ run = '''
   #!/usr/bin/env zsh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
-    echo "Create .env file"
+    echo "Created .env file"
   fi
 
   if [[ "$GH_SETUP" == "TRUE" ]]; then
@@ -75,11 +75,11 @@ run = '''
   #!/usr/bin/env zsh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
-    echo "Create .env file"
+    echo "Created .env file"
   fi
 
   if [[ "$BEETS_SETUP" == "TRUE" ]]; then
-    echo "uvenv already configured"
+    echo "beets already configured"
   else
     uvenv install "beets[chroma,autobpm,fetchart,embedart,lyrics,scrub,thumbnails,lastgenre]"
     uvenv inject beets standard-aifc standard-sunau beetcamp
@@ -93,7 +93,7 @@ run = '''
   #!/usr/bin/env sh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
-    echo "Create .env file"
+    echo "Created .env file"
   fi
 
   if [[ "$PICOTOOL_SETUP" == "TRUE" ]]; then
