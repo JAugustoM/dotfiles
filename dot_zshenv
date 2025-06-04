@@ -5,6 +5,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 path+=($HOME/.local/bin)
 path+=($HOME/bin)
 path+=($HOME/.bun/bin)
+path+=($HOME/.cargo/bin)
 
 # Custom Variables
 EDITOR="$(brew --prefix)/bin/nvim"
