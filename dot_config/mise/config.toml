@@ -105,7 +105,7 @@ run = '''
     echo "Created .env"
   else
     echo ".env exists"
-    echo "Test var = " $TEST
+    echo $TEST
     cat $MISE_TASK_DIR/.env
   fi
 '''
