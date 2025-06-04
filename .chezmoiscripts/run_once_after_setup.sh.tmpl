@@ -25,16 +25,18 @@ sudo dnf install arm-none-eabi-gcc-cs-c++ arm-none-eabi-newlib libusb1-devel
 # Brew
 if [[ ! -d /home/linuxbrew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "Brew already installed"
 fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# while read bin; do
-#   if type -P "$bin" &>/dev/null; then
-#     brew install "$bin"
-#   else
-#     echo "$bin already installed"
-#   fi
-# done <brew_packages.txt
+{{ range .packages.brew -}}
+if type -P {{ . | quote }} &>/dev/null; then
+  echo "{{ . }} already installed"
+else
+  brew install {{ . | quote }}
+fi
+{{ end -}}
 
 # Mise
 mise install

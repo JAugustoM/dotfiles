@@ -6,7 +6,7 @@ cargo_binstall = true
 
 [env]
 PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
-MISE_ENV_FILE = ".env"
+_.file = "~/.config/mise/.env"
 
 [tools]
 bun = "latest"
