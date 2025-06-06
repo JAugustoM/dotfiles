@@ -1,26 +1,69 @@
 #!/bin/bash
 
+dnf_packages=$(dnf list --installed)
+dnf_groups=$(dnf group list --installed)
+
 # RPM Fusion setup
-sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
-sudo dnf update -y @core
+
+if grep -q "rpmfusion-free-release.noarch" <<< "$dnf_packages"; then
+  echo "rpmfusion repos already setup"
+else
+  sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
+  sudo dnf update -y @core
+fi
 
 # RPM Fusion multimedia
-sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
+if grep -q "ffmpeg-free" <<< "$dnf_packages"; then
+  sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
+else
+  echo "ffmpeg already installed"
+fi
+
 sudo dnf update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 
-sudo dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
-sudo dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+if ! grep -q "mesa-va-drivers-freeworld" <<< "$dnf_packages"; then
+  sudo dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
+else
+  echo "mesa-va-drivers already installed"
+fi
 
-sudo dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
-sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
+if ! grep -q "mesa-vdpau-drivers-freeworld" <<< "$dnf_packages"; then
+  sudo dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+else
+  echo "mesa-vdpau-drivers already installed"
+fi
+
+if ! grep -q "mesa-va-drivers-freeworld.i686" <<< "$dnf_packages"; then
+  sudo dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
+else
+  echo "mesa-va-drivers.i686 already installed"
+fi
+
+if ! grep -q "mesa-vdpau-drivers-freeworld.i686" <<< "$dnf_packages"; then
+  sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
+else
+  echo "mesa-vdpau-drivers.i686 already installed"
+fi
 
 # System packages
 sudo dnf group install -y c-development development-tools
-sudo dnf install -y zsh stow kitty
 
-# PicoSDK
-sudo dnf install arm-none-eabi-gcc-cs-c++ arm-none-eabi-newlib libusb1-devel
+{{ range .packages.dnf.groups -}}
+if grep -q {{ . | quote }} <<< "$dnf_groups"; then
+  echo "{{ . }} already installed"
+else
+  sudo dnf group install {{ . }}
+fi
+{{ end -}}
+
+{{ range .packages.dnf.packages -}}
+if grep -q {{ . | quote }} <<< "$dnf_packages"; then
+  echo "{{ . }} already installed"
+else
+  sudo dnf install {{ . }}
+fi
+{{ end -}}
 
 # Rust
 if [[ ! -d $HOME/.cargo ]]; then

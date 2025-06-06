@@ -30,3 +30,10 @@ brew = [
   "yt-dlp",
   "aria2",
 ]
+dnf.packages = [
+  "zsh",
+  "kitty",
+  "arm-none-eabi-gcc-cs-c++",
+  "arm-none-eabi-newlib libusb1-devel",
+]
+dnf.groups = ["c-development", "development-tools"]
