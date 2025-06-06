@@ -46,9 +46,7 @@ else
   echo "mesa-vdpau-drivers.i686 already installed"
 fi
 
-# System packages
-sudo dnf group install -y c-development development-tools
-
+# System Packages
 {{ range .packages.dnf.groups -}}
 if grep -q {{ . | quote }} <<< "$dnf_groups"; then
   echo "{{ . }} already installed"
