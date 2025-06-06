@@ -1,12 +1,15 @@
 #!/bin/bash
 
+GREEN='\033[0;32m'
+NC='\033[0m'
+
 dnf_packages=$(dnf list --installed)
 dnf_groups=$(dnf group list --installed)
 
 # RPM Fusion setup
 
 if grep -q "rpmfusion-free-release.noarch" <<< "$dnf_packages"; then
-  echo "rpmfusion repos already setup"
+  echo -e "${GREEN}rpmfusion repos already setup${NC}"
 else
   sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
@@ -17,7 +20,7 @@ fi
 if grep -q "ffmpeg-free" <<< "$dnf_packages"; then
   sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
 else
-  echo "ffmpeg already installed"
+  echo -e "${GREEN}ffmpeg already installed${NC}"
 fi
 
 sudo dnf update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
@@ -25,31 +28,31 @@ sudo dnf update -y @multimedia --setopt="install_weak_deps=False" --exclude=Pack
 if ! grep -q "mesa-va-drivers-freeworld" <<< "$dnf_packages"; then
   sudo dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
 else
-  echo "mesa-va-drivers already installed"
+  echo -e "${GREEN}mesa-va-drivers already installed${NC}"
 fi
 
 if ! grep -q "mesa-vdpau-drivers-freeworld" <<< "$dnf_packages"; then
   sudo dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
 else
-  echo "mesa-vdpau-drivers already installed"
+  echo -e "${GREEN}mesa-vdpau-drivers already installed${NC}"
 fi
 
 if ! grep -q "mesa-va-drivers-freeworld.i686" <<< "$dnf_packages"; then
   sudo dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
 else
-  echo "mesa-va-drivers.i686 already installed"
+  echo -e "${GREEN}mesa-va-drivers.i686 already installed${NC}"
 fi
 
 if ! grep -q "mesa-vdpau-drivers-freeworld.i686" <<< "$dnf_packages"; then
   sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
 else
-  echo "mesa-vdpau-drivers.i686 already installed"
+  echo -e "${GREEN}mesa-vdpau-drivers.i686 already installed${NC}"
 fi
 
 # System Packages
 {{ range .packages.dnf.groups -}}
 if grep -q {{ . | quote }} <<< "$dnf_groups"; then
-  echo "{{ . }} already installed"
+  echo -e "${GREEN}{{ . }} already installed${NC}"
 else
   sudo dnf group install {{ . }}
 fi
@@ -57,7 +60,7 @@ fi
 
 {{ range .packages.dnf.packages -}}
 if grep -q {{ . | quote }} <<< "$dnf_packages"; then
-  echo "{{ . }} already installed"
+  echo -e "${GREEN}{{ . }} already installed${NC}"
 else
   sudo dnf install {{ . }}
 fi
@@ -67,14 +70,14 @@ fi
 if [[ ! -d $HOME/.cargo ]]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
 else
-  echo "Rust already installed"
+  echo -e "${GREEN}Rust already installed${NC}"
 fi
 
 # Brew
 if [[ ! -d /home/linuxbrew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-  echo "Brew already installed"
+  echo -e "${GREEN}Brew already installed${NC}"
 fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -82,7 +85,7 @@ brew_packages=$(brew list)
 
 {{ range .packages.brew -}}
 if grep -q {{ . | quote }} <<< "$brew_packages"; then
-  echo "{{ . }} already installed"
+  echo -e "${GREEN}{{ . }} already installed${NC}"
 else
   brew install {{ . | quote }}
 fi
