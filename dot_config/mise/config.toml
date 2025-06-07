@@ -84,7 +84,7 @@ run = '''
     echo "beets already configured"
   else
     uvenv install "beets[chroma,fetchart,embedart,lyrics,scrub,thumbnails,lastgenre]"
-    uvenv inject beets standard-aifc standard-sunau
+    uvenv inject beets standard-aifc standard-sunau beetcamp
     echo "BEETS_SETUP=TRUE" >> $MISE_TASK_DIR/.env
   fi
 '''
