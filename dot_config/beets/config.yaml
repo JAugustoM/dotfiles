@@ -13,7 +13,6 @@ paths:
   default: $albumartist/[$year]$atypes $album/$track $title
 plugins:
   - chroma
-  - autobpm
   - fetchart
   - embedart
   - lyrics
