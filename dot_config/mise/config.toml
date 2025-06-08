@@ -7,7 +7,7 @@ idiomatic_version_file_enable_tools = ["python"]
 experimental = true
 
 [env]
-PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
+# PICO_SDK_PATH = "/home/jaugusto/Dev/.pico-sdk"
 _.file = "~/.config/mise/.env"
 
 [tools]
