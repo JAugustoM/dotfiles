@@ -29,6 +29,7 @@ brew = [
   "picotool",
   "yt-dlp",
   "aria2",
+  "zellij",
 ]
 dnf.packages = [
   "zsh",
