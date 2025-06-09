@@ -3,6 +3,7 @@ autoCommit = true
 autoPush = true
 
 [edit]
+command = "nvim"
 apply = true
 
 [data.packages]
