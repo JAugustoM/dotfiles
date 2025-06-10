@@ -10,4 +10,3 @@ antidote load
 source <(fzf --zsh)
 
 eval "$(starship init zsh)"
-eval "$(zellij setup --generate-auto-start zsh)"
