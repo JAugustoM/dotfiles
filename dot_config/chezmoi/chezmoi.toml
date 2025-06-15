@@ -30,6 +30,7 @@ brew = [
   "yt-dlp",
   "aria2",
   "zellij",
+  "tldr",
 ]
 dnf.packages = [
   "kitty",
