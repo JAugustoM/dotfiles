@@ -4,7 +4,6 @@ if status is-interactive
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
     mise activate fish | source
-    mise completion fish | source
 
     fzf --fish | source
 
