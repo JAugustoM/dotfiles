@@ -10,6 +10,4 @@ if status is-interactive
     starship init fish | source
 
     enable_transience
-
-    eval (zellij setup --generate-auto-start fish | string collect)
 end
