@@ -33,7 +33,7 @@ usage = '''
   arg "project_name" "Project name"
 '''
 run = '''
-  #!/usr/bin/env zsh
+  #!/usr/bin/env sh
   mkdir $usage_project_name
   cd $usage_project_name
   cp -r ~/Templates/pico-sdk-template/. .
@@ -47,7 +47,7 @@ usage = '''
   arg "project_name" "Project name"
 '''
 run = '''
-  #!/usr/bin/env zsh
+  #!/usr/bin/env sh
   mkdir $usage_project_name
   cd $usage_project_name
   cp -r ~/Templates/typescript-template/. .
@@ -56,7 +56,7 @@ run = '''
 [tasks."setup:gh"]
 description = "Sets up GH as credential manager"
 run = '''
-  #!/usr/bin/env zsh
+  #!/usr/bin/env sh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
     echo "Created .env file"
@@ -74,7 +74,7 @@ run = '''
 [tasks."setup:beets"]
 description = "Setup for the beets tool"
 run = '''
-  #!/usr/bin/env zsh
+  #!/usr/bin/env sh
   if [[ ! -r $MISE_TASK_DIR/.env ]]; then
     touch $MISE_TASK_DIR/.env
     echo "Created .env file"
