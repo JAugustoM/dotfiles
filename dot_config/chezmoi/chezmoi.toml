@@ -8,7 +8,6 @@ apply = true
 
 [data.packages]
 brew = [
-  "antidote",
   "eza",
   "fastfetch",
   "fd",
@@ -33,10 +32,10 @@ brew = [
   "zellij",
 ]
 dnf.packages = [
-  "zsh",
   "kitty",
   "arm-none-eabi-gcc-cs-c++",
   "arm-none-eabi-newlib",
   "libusb1-devel",
+  "fish",
 ]
 dnf.groups = ["c-development", "development-tools"]
