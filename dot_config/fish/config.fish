@@ -1,7 +1,9 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
-    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    mise activate fish | source
 
     fzf --fish | source
 
