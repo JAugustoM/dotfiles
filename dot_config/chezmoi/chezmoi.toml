@@ -31,12 +31,14 @@ brew = [
   "aria2",
   "zellij",
   "tldr",
+  "meson",
 ]
 dnf.packages = [
   "kitty",
   "arm-none-eabi-gcc-cs-c++",
   "arm-none-eabi-newlib",
   "libusb1-devel",
+  "hidapi-devel",
   "fish",
 ]
 dnf.groups = ["c-development", "development-tools"]
