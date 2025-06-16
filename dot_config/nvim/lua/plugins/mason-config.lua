@@ -10,6 +10,7 @@ return {
       "alejandra",
       "nil",
       "just-lsp",
+      "fish-lsp",
     },
   },
 }
