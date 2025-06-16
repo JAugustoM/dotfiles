@@ -123,6 +123,6 @@ run = '''
 description = "Updates development tools"
 run = '''
   rustup update
-  uvenv upgrade-all
   mise up
+  uvenv upgrade-all
 '''
