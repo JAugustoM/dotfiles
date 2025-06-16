@@ -72,7 +72,7 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = "󰝚 "
 "Pictures" = " "
-"Developer" = "󰲋 "
+"Dev" = "󰲋 "
 
 [git_branch]
 symbol = ""
