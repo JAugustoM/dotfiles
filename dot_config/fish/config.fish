@@ -6,9 +6,8 @@ if status is-interactive
 
     fzf --fish | source
 
-    starship init fish | source
-    enable_transience
-
     set -p fish_complete_path (brew --prefix)/share/fish/completions
     set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+
+    oh-my-posh init fish --config "$(brew --prefix oh-my-posh)/themes/1_shell.omp.json" | source
 end

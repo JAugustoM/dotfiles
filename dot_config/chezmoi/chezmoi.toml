@@ -23,7 +23,6 @@ brew = [
   "ripgrep",
   "yazi",
   "zoxide",
-  "starship",
   "kew",
   "mise",
   "picotool",
@@ -32,6 +31,7 @@ brew = [
   "zellij",
   "tldr",
   "meson",
+  "oh-my-posh",
 ]
 dnf.packages = [
   "kitty",
