@@ -40,5 +40,6 @@ dnf.packages = [
   "libusb1-devel",
   "hidapi-devel",
   "fish",
+  "langpacks-pt_BR",
 ]
 dnf.groups = ["c-development", "development-tools"]
