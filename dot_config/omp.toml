@@ -54,6 +54,10 @@ type = 'prompt'
 alignment = 'right'
 
 [[blocks.segments]]
+type = 'status'
+template = "{{ if eq .Code 0 }}\uf00c{{ else }}\uf071 {{ reason .Code }}{{ end }}"
+
+[[blocks.segments]]
 trailing_diamond = ' '
 template = 'RAM:{{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB '
 foreground = '#85C980'
