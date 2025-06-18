@@ -55,7 +55,8 @@ alignment = 'right'
 
 [[blocks.segments]]
 type = 'status'
-template = "{{ if eq .Code 0 }}\uf00c{{ else }}\uf071 {{ reason .Code }}{{ end }}"
+template = "{{ if eq .Code 0 }}\uf00c{{ else }}\uf071 {{ reason .Code }} {{ end }}"
+foreground = "#F62F2E"
 
 [[blocks.segments]]
 trailing_diamond = ' '
